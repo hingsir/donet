@@ -1,0 +1,14 @@
+{
+  "name": "donet",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "hingsir",
+  "license": "ISC",
+  "dependencies": {
+    "make-array": "^1.0.1"
+  }
+}

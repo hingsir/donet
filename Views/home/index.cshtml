@@ -1,0 +1,22 @@
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title></title>
+</head>
+<body>
+    <div>
+        @ViewBag.foo
+    </div>
+    <ul>
+      @foreach (var item in ViewBag.bar){
+        <li>@item</li>
+      }
+    </ul>
+</body>
+</html>

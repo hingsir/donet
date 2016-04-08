@@ -1,0 +1,2 @@
+ViewBag.foo = "city list";
+ViewBag.bar = new string[] {"Huzhou","HangZhou","TaiZhou" };
