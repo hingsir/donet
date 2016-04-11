@@ -1,5 +1,6 @@
 var fs = require('fs')
 var stat = fs.stat
+var _PATH_ = require('path')
 var makeArray = require('make-array')
 
 module.exports = fileHelper = {
@@ -7,12 +8,15 @@ module.exports = fileHelper = {
     fs.readFile(src, function(err, data){
       if(err) throw err
       if(middleware){
-        data = middleware(dst, data);
+        data = middleware(src, data);
       }
       fs.writeFile(dst, data)
     })
   },
   copyDir: function(src, dst, middleware){
+    // 创建目的目录
+    fileHelper.mkdirs(dst)
+
     // 读取目录中的所有文件/目录
     fs.readdir( src, function( err, paths ){
       if( err ){
@@ -64,5 +68,23 @@ module.exports = fileHelper = {
       }
     });
     return dirs;
+  },
+
+  mkdirs: function(dir){
+
+    _PATH_.resolve(dir);
+
+    if (fs.existsSync(dir)) {
+        if (fs.statSync(dir).isDirectory()) {
+            return;
+        }
+        throw new Error("Not a directory: " + dir);
+    }
+    var i = dir.lastIndexOf(_PATH_.sep);
+    if (i < 0) {
+        throw new Error("No parent directory: " + dir);
+    }
+    fileHelper.mkdirs(dir.substring(0, i));
+    fs.mkdirSync(dir);
   }
 }
