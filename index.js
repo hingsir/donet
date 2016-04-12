@@ -18,6 +18,8 @@ function deploy(dest){
      }
    })
 
+   fileHelper.copyDir('./static', dest + '/static')
+
    fileHelper.copyDir('./test/async', dest + '/async')
 
 }
