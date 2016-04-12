@@ -19,4 +19,3 @@ function deploy(dest){
 }
 
 module.exports = deploy;
-deploy('d://donet-test')
