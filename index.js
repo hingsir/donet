@@ -8,10 +8,14 @@ function deploy(dest){
 
    fileHelper.copyDir('./views', dest + '/Views', function(viewPath, data){
      var viewBagPath = viewPath.replace(/\/views\//, '/test/viewbag/').replace(/\.\w+$/, '.viewbag')
-     var viewbag = fs.readFileSync(viewBagPath)
-     return String(data).replace(/^/, function($){
-       return '@{\n' + viewbag + '}\n'
-     })
+     if(fs.existsSync(viewBagPath)){
+       var viewbag = fs.readFileSync(viewBagPath)
+       return String(data).replace(/^/, function($){
+         return '@{\n' + viewbag + '}\n'
+       })
+     }else{
+       return String(data);
+     }
    })
 
    fileHelper.copyDir('./test/async', dest + '/async')
