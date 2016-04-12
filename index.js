@@ -6,7 +6,7 @@ function deploy(dest){
 
    fileHelper.copyDir('./libs/donet-route', dest);
 
-   fileHelper.copyDir('./Views', dest + '/Views', function(viewPath, data){
+   fileHelper.copyDir('./views', dest + '/Views', function(viewPath, data){
      var viewBagPath = viewPath.replace(/\/Views\//, '/test/viewbag/').replace(/\.\w+$/, '.viewbag')
      var viewbag = fs.readFileSync(viewBagPath)
      return String(data).replace(/^/, function($){
@@ -19,4 +19,4 @@ function deploy(dest){
 }
 
 module.exports = deploy;
-deploy('/Users/chexingyou/Documents/github/donet-test')
+deploy('d://donet-test')

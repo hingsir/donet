@@ -72,7 +72,7 @@ module.exports = fileHelper = {
 
   mkdirs: function(dir){
 
-    _PATH_.resolve(dir);
+    dir = _PATH_.resolve(dir);
 
     if (fs.existsSync(dir)) {
         if (fs.statSync(dir).isDirectory()) {
