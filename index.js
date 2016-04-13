@@ -10,11 +10,11 @@ function deploy(dest){
      var viewBagPath = viewPath.replace(/\/views\//, '/test/viewbag/').replace(/\.\w+$/, '.viewbag')
      if(fs.existsSync(viewBagPath)){
        var viewbag = fs.readFileSync(viewBagPath)
-       return String(data).replace(/^/, function($){
+       return '\ufeff' + String(data).replace(/^/, function($){
          return '@{\n' + viewbag + '}\n'
        })
      }else{
-       return String(data);
+       return '\ufeff' + String(data);
      }
    })
 
